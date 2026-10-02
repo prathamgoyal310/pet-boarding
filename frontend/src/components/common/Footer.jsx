@@ -1,4 +1,6 @@
 import React from 'react';
+import { BRAND } from '../../constants/brand';
+import { FOOTER_LINKS } from '../../constants/navigation';
 
 export default function Footer() {
   return (
@@ -9,16 +11,16 @@ export default function Footer() {
           <div className="space-y-4 max-w-md">
             <div className="flex items-center gap-3.5">
               <img
-                src="/assets/images/furrever_crest.png"
+                src={BRAND.crestLogo}
                 alt="Furrever Inn Crest"
                 className="h-12 w-auto object-contain drop-shadow-[0_2px_12px_rgba(212,175,55,0.4)]"
               />
               <div className="flex flex-col">
                 <span className="font-['Cinzel',serif] text-xl tracking-wider uppercase text-[#ffdad4] leading-none">
-                  Furrever Inn Pvt. Ltd.
+                  {BRAND.name}
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.18em] text-[#ffb4ac] mt-1 font-semibold">
-                  Premier Canine Sanctuary • Haryana
+                  Premier Canine Sanctuary • {BRAND.location}
                 </span>
               </div>
             </div>
@@ -42,34 +44,24 @@ export default function Footer() {
 
         {/* Middle Row: Architectural Navigation Links */}
         <div className="flex flex-wrap gap-x-10 gap-y-4 text-xs font-bold uppercase tracking-wider text-[#dac2bf]">
-          <a className="hover:text-[#ffb4ac] transition-colors duration-300" href="#suites">
-            Suites &amp; Grounds
-          </a>
-          <a className="hover:text-[#ffb4ac] transition-colors duration-300" href="#services">
-            Sommelier Nutrition
-          </a>
-          <a className="hover:text-[#ffb4ac] transition-colors duration-300" href="#services">
-            Medical Spa &amp; Hydrotherapy
-          </a>
-          <a className="hover:text-[#ffb4ac] transition-colors duration-300" href="#philosophy">
-            Sanctuary Manifesto
-          </a>
-          <a className="hover:text-[#ffb4ac] transition-colors duration-300" href="#faq">
-            Admissions &amp; Health Check
-          </a>
-          <a className="text-[#ffdad4] underline underline-offset-4 hover:text-[#ffb4ac] transition-colors duration-300" href="#enquiry">
-            Private Concierge
-          </a>
-          <a className="hover:text-[#ffb4ac] transition-colors duration-300" href="#">
-            Privacy Policy
-          </a>
+          {FOOTER_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className={`transition-colors duration-300 ${
+                link.highlight ? 'text-[#ffdad4] underline underline-offset-4 hover:text-[#ffb4ac]' : 'hover:text-[#ffb4ac]'
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
 
         {/* Bottom Row: Copyright text */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-[#aa8986]/10 text-[#aa8986] font-['Plus_Jakarta_Sans',sans-serif] text-xs">
-          <p>© 2024 Furrever Inn Pvt. Ltd. All Rights Reserved. Premier Pet Boarding, Daycare &amp; Canine Wellness.</p>
+          <p>© 2024 {BRAND.name} All Rights Reserved. Premier Pet Boarding, Daycare &amp; Canine Wellness.</p>
           <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-wider">
-            <span>Non-Commercial Kenneling License #KA/BLR/VET-2024-99</span>
+            <span>{BRAND.license}</span>
           </div>
         </div>
       </div>

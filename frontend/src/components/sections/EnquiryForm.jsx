@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { BRAND } from '../../constants/brand';
+import { apiService } from '../../services/api';
 
 export default function EnquiryForm() {
   const [formData, setFormData] = useState({
@@ -27,20 +29,11 @@ export default function EnquiryForm() {
     setError(null);
 
     try {
-      const response = await fetch('/api/enquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit reservation');
-      }
-
+      await apiService.submitEnquiry(formData);
       setSubmitted(true);
     } catch (err) {
-      console.warn('Backend unavailable, showing success fallback:', err);
-      // Fallback optimistic success
+      console.warn('API submission failed, using optimistic response:', err);
+      // Optimistic reservation confirmation
       setSubmitted(true);
     } finally {
       setLoading(false);
@@ -61,7 +54,7 @@ export default function EnquiryForm() {
             Request a Bespoke Stay
           </h2>
           <p className="font-['Plus_Jakarta_Sans',sans-serif] text-sm md:text-base text-[#dac2bf] font-normal leading-relaxed">
-            Due to our limited guest capacity of just 16 sovereign suites, reservations are confirmed following verification of immunization and behavioral intake history.
+            Due to our limited guest capacity of just {BRAND.dimensions.suitesCount} sovereign suites, reservations are confirmed following verification of immunization and behavioral intake history.
           </p>
 
           <div className="p-6 bg-[#161214] border border-[#aa8986]/30 space-y-4 shadow-lg">
@@ -71,15 +64,15 @@ export default function EnquiryForm() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-[#f3dfdd]">
                 <span className="material-symbols-outlined text-[#ba1a1a] text-lg">call</span>
-                <span className="font-['Plus_Jakarta_Sans',sans-serif] text-sm">+91 83074 69390</span>
+                <span className="font-['Plus_Jakarta_Sans',sans-serif] text-sm">{BRAND.phone}</span>
               </div>
               <div className="flex items-center gap-3 text-[#f3dfdd]">
                 <span className="material-symbols-outlined text-[#ba1a1a] text-lg">mail</span>
-                <span className="font-['Plus_Jakarta_Sans',sans-serif] text-sm">care@furreverinn.com</span>
+                <span className="font-['Plus_Jakarta_Sans',sans-serif] text-sm">{BRAND.email}</span>
               </div>
               <div className="flex items-center gap-3 text-[#f3dfdd]">
                 <span className="material-symbols-outlined text-[#ba1a1a] text-lg">location_on</span>
-                <span className="font-['Plus_Jakarta_Sans',sans-serif] text-sm">Furrever Inn Sanctuary Estate, Haryana</span>
+                <span className="font-['Plus_Jakarta_Sans',sans-serif] text-sm">{BRAND.estate}</span>
               </div>
             </div>
           </div>
@@ -87,7 +80,7 @@ export default function EnquiryForm() {
           <div className="border-t border-[#aa8986]/20 pt-6">
             <span className="text-[11px] font-bold uppercase text-[#aa8986] tracking-wider">Sanctuary Accreditation</span>
             <p className="font-['Plus_Jakarta_Sans',sans-serif] text-xs text-[#aa8986] mt-1 leading-relaxed">
-              Licensed by the State Animal Welfare Board &amp; Certified Fear-Free® Hospitality Facility.
+              {BRAND.accreditation}
             </p>
           </div>
         </div>
@@ -105,7 +98,7 @@ export default function EnquiryForm() {
               </p>
               <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href={`https://wa.me/918307469390?text=Hi%20Furrever%20Inn,%20I%20just%20submitted%20a%20booking%20enquiry%20for%20${encodeURIComponent(formData.petName || 'my pet')}.`}
+                  href={`https://wa.me/${BRAND.rawPhone}?text=Hi%20Furrever%20Inn,%20I%20just%20submitted%20a%20booking%20enquiry%20for%20${encodeURIComponent(formData.petName || 'my pet')}.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-[#128C7E] hover:bg-[#25D366] text-white text-xs uppercase font-bold tracking-widest transition-colors flex items-center justify-center gap-2"
@@ -116,7 +109,7 @@ export default function EnquiryForm() {
                 <button
                   type="button"
                   onClick={() => setSubmitted(false)}
-                  className="px-6 py-3 border border-[#aa8986]/40 text-[#ffb4ac] hover:border-[#ffb4ac] text-xs uppercase font-bold tracking-widest transition-colors"
+                  className="px-6 py-3 border border-[#aa8986]/40 text-[#ffb4ac] hover:border-[#ffb4ac] text-xs uppercase font-bold tracking-widest transition-colors cursor-pointer"
                 >
                   Submit Another Inquiry
                 </button>
