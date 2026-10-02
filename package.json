@@ -1,0 +1,23 @@
+{
+  "name": "furrever-inn",
+  "version": "1.0.0",
+  "description": "Furrever Inn - Premier Pet Boarding & Daycare (React + Vite + TailwindCSS + Node/Express)",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix frontend\" \"npm start --prefix backend\"",
+    "start:backend": "npm start --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "build:frontend": "npm run build --prefix frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "keywords": [
+    "pet-boarding",
+    "react",
+    "vite",
+    "tailwindcss",
+    "express"
+  ],
+  "author": "Furrever Inn",
+  "license": "ISC"
+}
