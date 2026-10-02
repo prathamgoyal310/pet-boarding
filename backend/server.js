@@ -82,6 +82,22 @@ app.post('/api/enquiry', (req, res) => {
   });
 });
 
+const path = require('path');
+
+// Serve static frontend build if present
+const frontendDist = path.join(__dirname, '../frontend/dist');
+app.use(express.static(frontendDist));
+
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api')) return next();
+  const indexPath = path.join(frontendDist, 'index.html');
+  res.sendFile(indexPath, (err) => {
+    if (err) {
+      res.status(200).send('Furrever Inn API is online. Run frontend development server via "npm run dev".');
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`[Furrever Inn Backend] API Server running on port ${PORT}`);
 });
