@@ -1,80 +1,112 @@
 import React from 'react';
-import { BRAND } from '../../constants/brand';
+import stitchHero from '../../assets/images/stitch_hero.jpg';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-[#aa8986]/20 py-20 px-6 lg:px-12 reveal-up">
-      {/* Background Image with Dark Vignette */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/assets/images/hero.jpg"
-          alt="Canine Sanctuary Grounds"
-          className="w-full h-full object-cover object-center opacity-35 scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0b090a] via-[#0b090a]/75 to-transparent"></div>
-        <div className="absolute inset-0 bg-radial from-transparent via-[#0b090a]/50 to-[#0b090a]"></div>
-      </div>
+    <section className="relative min-h-[calc(100vh-5rem)] flex flex-col justify-center py-8 sm:py-10 lg:py-12 xl:py-14 px-6 lg:px-12 max-w-7xl mx-auto border-b border-[#880d1e]/40 overflow-hidden reveal-up">
+      {/* Ambient background glow */}
+      <div
+        className="pointer-events-none absolute -top-12 -left-20 w-96 h-96 rounded-full bg-[#880d1e]/40 blur-3xl opacity-60 z-0"
+        aria-hidden="true"
+      ></div>
+      <div
+        className="pointer-events-none absolute top-1/2 right-10 w-80 h-80 rounded-full bg-[#dd2d4a]/20 blur-3xl opacity-40 z-0"
+        aria-hidden="true"
+      ></div>
 
-      {/* Floating Ambient Glow Orbs */}
-      <div className="pointer-events-none absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#660708]/30 blur-3xl opacity-50 ambient-float"></div>
-      <div className="pointer-events-none absolute bottom-1/4 right-1/4 w-[450px] h-[450px] rounded-full bg-[#ba1a1a]/20 blur-3xl opacity-40 ambient-float"></div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center relative z-10">
+        {/* Headline & Subheadline (6 cols on desktop) */}
+        <div className="lg:col-span-6 flex flex-col justify-between space-y-6 lg:space-y-8">
+          <div className="inline-flex items-center gap-3">
+            <span className="font-['Metrophobic',sans-serif] text-[0.6875rem] uppercase tracking-[0.18em] text-[#f26a8d] border border-[#880d1e]/60 px-3 py-1 bg-[#26070d]">
+              Private Estate • Haryana
+            </span>
+          </div>
 
-      {/* Hero Content */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8">
-        {/* Luxury Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#ffb4ac]/30 bg-[#161214]/80 backdrop-blur-md shadow-[0_0_20px_rgba(186,26,26,0.3)]">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#ffb4ac]">
-            Premier Pet Sanctuary • {BRAND.location}
-          </span>
+          <div className="space-y-3 lg:space-y-4">
+            <h1 className="font-['EB_Garamond',serif] text-4xl sm:text-5xl lg:text-5xl xl:text-6xl text-[#f3e9dc] font-normal leading-[1.06] tracking-tight">
+              The Fun They Crave, The Care You Trust.
+            </h1>
+            <p className="font-['Metrophobic',sans-serif] text-sm sm:text-base lg:text-lg text-[#f3e9dc]/85 max-w-xl font-normal leading-relaxed">
+              Welcome to Furrever Inn Pvt. Ltd. — Haryana's premier canine sanctuary offering 24x7 CCTV access, dedicated pick &amp; drop, frequent video updates, hospital-grade hygiene, and uncompromised veterinary care.
+            </p>
+          </div>
+
+          {/* Metric Badges with striking Light Cyan contrast */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 sm:pt-6 border-t border-[#880d1e]/40">
+            <div>
+              <div className="font-['EB_Garamond',serif] text-2xl lg:text-3xl text-[#cbeef3] font-medium drop-shadow-[0_0_10px_rgba(203,238,243,0.3)]">
+                24/7
+              </div>
+              <div className="font-['Metrophobic',sans-serif] text-[10px] sm:text-xs lg:text-[0.6875rem] uppercase tracking-wider text-[#f49cbb] mt-1 font-semibold">
+                Veterinary ICU On-Call
+              </div>
+            </div>
+            <div className="border-l border-[#880d1e]/40 pl-3 sm:pl-4">
+              <div className="font-['EB_Garamond',serif] text-2xl lg:text-3xl text-[#cbeef3] font-medium drop-shadow-[0_0_10px_rgba(203,238,243,0.3)]">
+                1 : 1
+              </div>
+              <div className="font-['Metrophobic',sans-serif] text-[10px] sm:text-xs lg:text-[0.6875rem] uppercase tracking-wider text-[#f49cbb] mt-1 font-semibold">
+                Caregiver Dedicated Ratio
+              </div>
+            </div>
+            <div className="border-l border-[#880d1e]/40 pl-3 sm:pl-4">
+              <div className="font-['EB_Garamond',serif] text-2xl lg:text-3xl text-[#cbeef3] font-medium drop-shadow-[0_0_10px_rgba(203,238,243,0.3)]">
+                100%
+              </div>
+              <div className="font-['Metrophobic',sans-serif] text-[10px] sm:text-xs lg:text-[0.6875rem] uppercase tracking-wider text-[#f49cbb] mt-1 font-semibold">
+                Farm-to-Bowl Organic
+              </div>
+            </div>
+          </div>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2 sm:pt-4">
+            <a
+              className="bg-[#dd2d4a] text-white px-6 sm:px-8 py-3.5 sm:py-4 border border-[#f26a8d]/40 hover:bg-[#b81d36] transition-all duration-300 font-['Metrophobic',sans-serif] text-xs uppercase tracking-widest font-semibold shadow-[0_0_15px_rgba(221,45,74,0.4)]"
+              href="#rates"
+            >
+              Explore Suites &amp; Rates
+            </a>
+            <a
+              className="bg-transparent text-[#f3e9dc] px-6 sm:px-8 py-3.5 sm:py-4 border border-[#880d1e]/60 hover:border-[#f26a8d] hover:bg-[#f26a8d]/10 transition-all duration-300 font-['Metrophobic',sans-serif] text-xs uppercase tracking-widest font-semibold"
+              href="#philosophy"
+            >
+              The Sanctuary Manifesto
+            </a>
+          </div>
         </div>
 
-        {/* Headline */}
-        <h1 className="font-['Cinzel',serif] text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#ffdad4] leading-[1.1]">
-          {BRAND.tagline.split(',')[0]}, <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffb4ac] via-[#ffffff] to-[#ba1a1a]">
-            {BRAND.tagline.split(',')[1] || "The Care You Trust"}
-          </span>
-        </h1>
-
-        {/* Subtitle */}
-        <p className="font-['Plus_Jakarta_Sans',sans-serif] text-base sm:text-lg lg:text-xl text-[#dac2bf] max-w-2xl mx-auto leading-relaxed font-normal">
-          An ultra-luxurious sanctuary featuring a <strong>900 sq.ft indoor suite</strong>, <strong>nearly 2,000 sq.ft private lawn</strong>, dedicated doorstep pick &amp; drop, 24x7 live CCTV camera streaming, and 100% verified vaccinated companions.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-          <a
-            href="#enquiry"
-            className="w-full sm:w-auto px-8 py-4 bg-[#ba1a1a] hover:bg-[#93000a] text-white text-xs font-bold uppercase tracking-[0.2em] transition-all shadow-[0_0_25px_rgba(186,26,26,0.6)] hover:shadow-[0_0_35px_rgba(186,26,26,0.9)] hover:scale-105"
-          >
-            Request Private Admission
-          </a>
-          <a
-            href="#suites"
-            className="w-full sm:w-auto px-8 py-4 bg-[#161214]/80 hover:bg-[#201a1a] text-[#ffdad4] hover:text-white border border-[#aa8986]/40 hover:border-[#ffb4ac] text-xs font-bold uppercase tracking-[0.2em] transition-all backdrop-blur-md"
-          >
-            Explore Sanctuary Suites
-          </a>
-        </div>
-
-        {/* Key USPs Mini-Grid */}
-        <div className="pt-10 grid grid-cols-2 md:grid-cols-4 gap-4 text-left border-t border-[#aa8986]/20">
-          <div className="p-3 bg-[#161214]/60 border border-[#aa8986]/20">
-            <span className="text-[10px] uppercase tracking-wider text-[#ffb4ac] font-bold block">Sanctuary Grounds</span>
-            <span className="text-xs text-[#f3dfdd] font-semibold">900 sq.ft + 2,000 sq.ft Lawn</span>
-          </div>
-          <div className="p-3 bg-[#161214]/60 border border-[#aa8986]/20">
-            <span className="text-[10px] uppercase tracking-wider text-[#ffb4ac] font-bold block">Live Feeds</span>
-            <span className="text-xs text-[#f3dfdd] font-semibold">24x7 Encrypted CCTV</span>
-          </div>
-          <div className="p-3 bg-[#161214]/60 border border-[#aa8986]/20">
-            <span className="text-[10px] uppercase tracking-wider text-[#ffb4ac] font-bold block">Doorstep Care</span>
-            <span className="text-xs text-[#f3dfdd] font-semibold">Pick &amp; Drop across Haryana</span>
-          </div>
-          <div className="p-3 bg-[#161214]/60 border border-[#aa8986]/20">
-            <span className="text-[10px] uppercase tracking-wider text-[#ffb4ac] font-bold block">Safety Protocol</span>
-            <span className="text-xs text-[#f3dfdd] font-semibold">100% Vaccinated Companions</span>
+        {/* Architectural Feature Image (6 cols on desktop) */}
+        <div className="lg:col-span-6 relative">
+          <div className="relative overflow-hidden bg-[#26070d] border border-[#880d1e]/50 group shadow-2xl">
+            <img
+              alt="The Comfort Stay Suite at Furrever Inn featuring a Weimaraner reposing on an emerald tufted ottoman in a minimalist timber-accented architectural salon with floor-to-ceiling garden panorama."
+              className="w-full h-[360px] sm:h-[440px] lg:h-[460px] xl:h-[520px] 2xl:h-[580px] object-cover filter brightness-[0.95] contrast-[1.04] transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+              src={stitchHero}
+            />
+            {/* Bottom Vignette / Overlay Specs */}
+            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#140205] via-[#140205]/85 to-transparent p-4 sm:p-6 pt-10 sm:pt-12 flex justify-between items-end border-t border-[#880d1e]/35">
+              <div>
+                <span className="font-['Metrophobic',sans-serif] text-[0.6875rem] uppercase text-[#f26a8d] tracking-widest block mb-1 font-semibold">
+                  Suite 01 Spotlight
+                </span>
+                <h3 className="font-['EB_Garamond',serif] text-lg sm:text-xl lg:text-2xl text-[#f3e9dc] font-medium leading-tight">
+                  The Comfort Stay Suite
+                </h3>
+                <p className="font-['Metrophobic',sans-serif] text-[11px] sm:text-xs text-[#f49cbb] mt-0.5">
+                  Radiant hydronic thermal flooring • Acoustically isolated forest exposure
+                </p>
+              </div>
+              <div className="text-right shrink-0 ml-3 sm:ml-4">
+                <span className="font-['Metrophobic',sans-serif] text-[0.6875rem] uppercase text-[#cbeef3] block mb-1 font-semibold">
+                  Sanctuary Scale
+                </span>
+                <div className="font-['EB_Garamond',serif] text-base sm:text-lg lg:text-xl text-[#f3e9dc]">
+                  420 sq.ft + Private Lawn
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

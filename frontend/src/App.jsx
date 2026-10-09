@@ -12,7 +12,7 @@ export default function App() {
   useScrollReveal('.reveal-up, .reveal-scale');
 
   return (
-    <div className="min-h-screen bg-[#0b090a] text-[#f3dfdd] selection:bg-[#ba1a1a] selection:text-white font-['Plus_Jakarta_Sans',sans-serif]">
+    <div className="min-h-screen bg-[#140205] text-[#f3e9dc] selection:bg-[#dd2d4a] selection:text-white font-['Plus_Jakarta_Sans',sans-serif]">
       {/* Animated Luxury Gold Crest Preloader */}
       <Preloader />
 

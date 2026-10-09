@@ -2,23 +2,31 @@
 
 @layer base {
   :root {
-    --color-primary: #ba1a1a;
-    --color-primary-container: #ba1a1a;
-    --color-primary-glow: #ffb4ac;
-    --color-surface: #0b090a;
-    --color-surface-container: #161a1d;
-    --color-surface-container-low: #131112;
-    --color-surface-container-high: #201a1c;
-    --color-surface-container-lowest: #080708;
-    --color-on-surface: #f5f3f4;
-    --color-on-surface-variant: #b1a7a6;
-    --color-outline: #8c8281;
-    --color-outline-variant: #4f4445;
+    --color-crushed-berry: #880d1e;
+    --color-amaranth: #dd2d4a;
+    --color-bubblegum-pink: #f26a8d;
+    --color-pink-mist: #f49cbb;
+    --color-light-cyan: #cbeef3;
+    --color-linen: #f3e9dc;
+
+    --color-primary: #dd2d4a;              /* Amaranth */
+    --color-primary-container: #880d1e;    /* Crushed Berry */
+    --color-primary-glow: #f26a8d;         /* Bubblegum Pink */
+    --color-surface: #140205;              /* Darkest Crushed Berry */
+    --color-surface-container: #26070d;    /* Deep Crushed Berry Card */
+    --color-surface-container-low: #1c050a;
+    --color-surface-container-high: #3d0d17;
+    --color-surface-container-lowest: #0e0103;
+    --color-on-surface: #f3e9dc;           /* Linen */
+    --color-on-surface-variant: #f49cbb;   /* Pink Mist */
+    --color-outline: #880d1e;              /* Crushed Berry */
+    --color-outline-variant: #f49cbb;      /* Pink Mist */
+    --color-contrast-cyan: #cbeef3;        /* Light Cyan */
   }
 
   body {
-    background-color: #0b090a;
-    color: #f5f3f4;
+    background-color: #140205;
+    color: #f3e9dc;
     font-family: 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
   }
@@ -37,6 +45,48 @@
     vertical-align: middle;
     line-height: 1;
   }
+}
+
+.font-display {
+  font-family: 'EB Garamond', 'Playfair Display', serif;
+}
+
+.font-label-caps {
+  font-family: 'Metrophobic', 'Plus Jakarta Sans', sans-serif;
+}
+
+.text-label-caps {
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+}
+
+.text-display {
+  font-size: 4.5rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.text-display-mobile {
+  font-size: 2.75rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.text-body-lg {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+}
+
+.text-headline-sm {
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.text-title-editorial {
+  font-size: 1.25rem;
+  line-height: 1.3;
 }
 
 /* Custom Scroll reveal and ambient animations */
@@ -75,7 +125,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #ffb4ac;
+  background: #dd2d4a;
   transform: translate(-50%, -50%);
   transition: transform 0.08s ease, background 0.3s ease, width 0.25s ease, height 0.25s ease;
 }
@@ -89,7 +139,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 180, 172, 0.45);
+  border: 1px solid rgba(244, 156, 187, 0.55);
   transform: translate(-50%, -50%);
   transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -100,23 +150,23 @@
 body.cursor-hover #cursor-dot {
   width: 10px;
   height: 10px;
-  background: #ff8a80;
+  background: #f26a8d;
 }
 
 body.cursor-hover #cursor-ring {
   width: 52px;
   height: 52px;
-  border-color: rgba(255, 138, 128, 0.6);
+  border-color: rgba(203, 238, 243, 0.85);
 }
 
 body.cursor-click #cursor-dot {
   width: 4px;
   height: 4px;
-  background: #ffffff;
+  background: #cbeef3;
 }
 
 body.cursor-click #cursor-ring {
   width: 20px;
   height: 20px;
-  border-color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(243, 233, 220, 0.9);
 }

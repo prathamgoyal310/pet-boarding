@@ -15,7 +15,7 @@ export default function CustomCursor() {
           top: `${position.y}px`,
           width: isClicked ? '4px' : isHovered ? '10px' : '6px',
           height: isClicked ? '4px' : isHovered ? '10px' : '6px',
-          background: isClicked ? '#ffffff' : isHovered ? '#ff8a80' : '#ffb4ac'
+          background: isClicked ? '#f5e9e2' : isHovered ? '#773344' : '#e3b5a4'
         }}
       />
       <div
@@ -26,10 +26,10 @@ export default function CustomCursor() {
           width: isClicked ? '20px' : isHovered ? '52px' : '32px',
           height: isClicked ? '20px' : isHovered ? '52px' : '32px',
           borderColor: isClicked
-            ? 'rgba(255, 255, 255, 0.8)'
+            ? 'rgba(245, 233, 226, 0.85)'
             : isHovered
-            ? 'rgba(255, 138, 128, 0.6)'
-            : 'rgba(255, 180, 172, 0.45)'
+            ? 'rgba(119, 51, 68, 0.7)'
+            : 'rgba(227, 181, 164, 0.45)'
         }}
       />
     </>
