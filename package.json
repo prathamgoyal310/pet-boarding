@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Furrever Inn - Premier Pet Boarding & Daycare (React + Vite + TailwindCSS + Node/Express)",
   "scripts": {
+    "start": "node backend/server.js",
+    "build": "npm install --prefix frontend && npm run build:frontend && npm install --prefix backend",
     "dev": "concurrently \"npm run dev --prefix frontend\" \"npm start --prefix backend\"",
     "start:backend": "npm start --prefix backend",
     "dev:frontend": "npm run dev --prefix frontend",
