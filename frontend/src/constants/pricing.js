@@ -2,8 +2,8 @@ export const TARIFF_PLANS = [
   {
     days: 1,
     label: "Day Sanctuary (Single Day / 8 hrs)",
-    breakdown: "₹2,500 / day flat daytime access.",
-    total: "₹2,500",
+    breakdown: "₹1,399 / day flat daytime access.",
+    total: "₹1,399",
     inclusions: [
       "8h Parkland Access & Dedicated Attendant",
       "Mid-Day Fresh Broth & Supervised Play",
@@ -29,7 +29,7 @@ export const TARIFF_PLANS = [
     inclusions: [
       "2x Weekly Hydrotherapy Conditioning",
       "Daily Farm-to-Bowl Organic Nutrition",
-      "24/7 Mobile HD Live Camera Access"
+      "24x7 CCTV Footage Available on Mobile"
     ]
   },
   {

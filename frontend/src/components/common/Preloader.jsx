@@ -27,7 +27,7 @@ export default function Preloader() {
   return (
     <div
       id="site-preloader"
-      className={`fixed inset-0 z-[999999] bg-[#140205] flex flex-col items-center justify-center transition-all duration-700 ease-out ${
+      className={`fixed inset-0 z-[999999] bg-[#0b0e14] flex flex-col items-center justify-center transition-all duration-700 ease-out ${
         fadeOut ? 'opacity-0 scale-105 pointer-events-none' : 'opacity-100'
       }`}
     >
@@ -41,7 +41,7 @@ export default function Preloader() {
           />
         </div>
         <div className="text-center space-y-2">
-          <h2 className="font-['Cinzel',serif] text-2xl sm:text-3xl tracking-[0.25em] text-[#f3e9dc] uppercase font-bold">
+          <h2 className="font-['Fraunces',serif] text-2xl sm:text-3xl tracking-[0.18em] text-[#f3e9dc] uppercase font-bold">
             Furrever Inn
           </h2>
           <p className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#f49cbb]">

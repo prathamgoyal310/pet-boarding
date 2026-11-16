@@ -1,10 +1,21 @@
 import React from 'react';
 import { useCustomCursor } from '../../hooks/useCustomCursor';
+import { useTheme } from '../../context/ThemeContext';
 
 export default function CustomCursor() {
   const { position, ringPos, isHovered, isClicked, isVisible } = useCustomCursor();
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
 
   if (!isVisible) return null;
+
+  const dotBg = isLight
+    ? (isClicked ? '#dd2d4a' : isHovered ? '#dd2d4a' : '#880d1e')
+    : (isClicked ? '#cbeef3' : isHovered ? '#dd2d4a' : '#f26a8d');
+
+  const ringBorder = isLight
+    ? (isClicked ? 'rgba(221, 45, 74, 0.95)' : isHovered ? 'rgba(221, 45, 74, 0.8)' : 'rgba(136, 13, 30, 0.45)')
+    : (isClicked ? 'rgba(203, 238, 243, 0.9)' : isHovered ? 'rgba(221, 45, 74, 0.75)' : 'rgba(244, 156, 187, 0.5)');
 
   return (
     <>
@@ -15,7 +26,7 @@ export default function CustomCursor() {
           top: `${position.y}px`,
           width: isClicked ? '4px' : isHovered ? '10px' : '6px',
           height: isClicked ? '4px' : isHovered ? '10px' : '6px',
-          background: isClicked ? '#f5e9e2' : isHovered ? '#773344' : '#e3b5a4'
+          background: dotBg
         }}
       />
       <div
@@ -25,11 +36,7 @@ export default function CustomCursor() {
           top: `${ringPos.y}px`,
           width: isClicked ? '20px' : isHovered ? '52px' : '32px',
           height: isClicked ? '20px' : isHovered ? '52px' : '32px',
-          borderColor: isClicked
-            ? 'rgba(245, 233, 226, 0.85)'
-            : isHovered
-            ? 'rgba(119, 51, 68, 0.7)'
-            : 'rgba(227, 181, 164, 0.45)'
+          borderColor: ringBorder
         }}
       />
     </>

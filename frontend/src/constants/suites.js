@@ -6,7 +6,7 @@ export const SUITES = [
     description: "Our signature expansive suite engineered for active canine guests desiring unrestrained movement, direct manicured lawn access, and dedicated attendant monitoring.",
     price: "₹1,199",
     period: "per night",
-    image: "/assets/images/play_area.jpg",
+    image: "/assets/images/photo_home_suite_garden.jpg",
     features: [
       "900 sq.ft Climate-Controlled Indoor Space",
       "Nearly 2,000 sq.ft Private Manicured Lawn",
@@ -36,7 +36,7 @@ export const SUITES = [
     description: "Floor-to-ceiling sunlit haven with direct garden vistas, shaded pergola resting deck, and tailored hydration bowls.",
     price: "₹1,299",
     period: "per night",
-    image: "/assets/images/loving_care.jpg",
+    image: "/assets/images/photo_home_suite_veranda.jpg",
     features: [
       "Direct Sunlit Sensory Views",
       "Dedicated Personal Handler",

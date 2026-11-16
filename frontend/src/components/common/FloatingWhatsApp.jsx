@@ -16,9 +16,9 @@ export default function FloatingWhatsApp() {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
         </span>
-        <span className="text-xs uppercase tracking-wider font-bold">Book via WhatsApp</span>
+        <span className="text-xs uppercase tracking-wider font-bold floating-whatsapp-text">Book via WhatsApp</span>
         <span className="bg-[#075E54] group-hover:bg-[#128C7E] text-[11px] px-2.5 py-1 rounded-full font-mono transition-colors">
-          8307469390
+          {BRAND.cleanPhone}
         </span>
       </a>
     </aside>

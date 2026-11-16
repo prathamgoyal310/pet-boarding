@@ -89,8 +89,9 @@ Or run individually:
 - **Modular Enterprise Architecture**: Separation of concerns across `constants/`, `services/`, `hooks/`, `components/common/`, `components/sections/`, and `pages/`.
 - **Tailored Luxury Aesthetics**: Garnet `#ba1a1a`, Dark Obsidian `#0b090a`, Rose Gold `#ffb4ac`, and Gold Crest accents.
 - **Accurate Information**:
-  - Location: **Haryana Sanctuary Estate**
-  - Direct Phone / WhatsApp: **+91 83074 69390**
+  - Address: **Shop No. 5, Opposite side of Green Power Residency, Sector 76, Faridabad, Haryana**
+  - Direct Phone / WhatsApp: **+91 98187 61097**
+  - Official Email: **innfurrever@gmail.com**
   - Dimensions: **900 sq.ft indoor area** + **nearly 2,000 sq.ft lawn**
   - Pricing: Starting at **₹1,199 / night**
 - **Interactive Daily Routine Diary**: 5-stage timeline with synchronized photo and description switching.

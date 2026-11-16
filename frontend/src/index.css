@@ -12,31 +12,42 @@
     --color-primary: #dd2d4a;              /* Amaranth */
     --color-primary-container: #880d1e;    /* Crushed Berry */
     --color-primary-glow: #f26a8d;         /* Bubblegum Pink */
-    --color-surface: #140205;              /* Darkest Crushed Berry */
-    --color-surface-container: #26070d;    /* Deep Crushed Berry Card */
-    --color-surface-container-low: #1c050a;
-    --color-surface-container-high: #3d0d17;
-    --color-surface-container-lowest: #0e0103;
+    --color-surface: #0b0e14;              /* High-contrast deep obsidian */
+    --color-surface-container: #121722;    /* Deep slate-obsidian card */
+    --color-surface-container-low: #0f131c;
+    --color-surface-container-high: #1a2232;
+    --color-surface-container-lowest: #07090d;
     --color-on-surface: #f3e9dc;           /* Linen */
     --color-on-surface-variant: #f49cbb;   /* Pink Mist */
     --color-outline: #880d1e;              /* Crushed Berry */
-    --color-outline-variant: #f49cbb;      /* Pink Mist */
+    --color-outline-variant: #cbeef3;      /* Light Cyan */
     --color-contrast-cyan: #cbeef3;        /* Light Cyan */
   }
 
+  html {
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: #140205;
+    background-color: #0b0e14;
     color: #f3e9dc;
     font-family: 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, .font-display {
-    font-family: 'Playfair Display', serif;
+  h1, h2, h3, h4, .font-display, .font-heading {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
   }
 
   .font-serif-brand {
-    font-family: 'Cinzel', serif;
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+  }
+
+  .font-accent {
+    font-family: 'Quicksand', sans-serif;
   }
 
   .material-symbols-outlined {
@@ -48,11 +59,29 @@
 }
 
 .font-display {
-  font-family: 'EB Garamond', 'Playfair Display', serif;
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
 }
 
 .font-label-caps {
-  font-family: 'Metrophobic', 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Quicksand', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Font aliases ensuring joyful heading font rendering */
+[class*="Cinzel"] {
+  font-family: 'Fraunces', serif !important;
+}
+
+[class*="Playfair_Display"] {
+  font-family: 'Fraunces', serif !important;
+}
+
+[class*="EB_Garamond"] {
+  font-family: 'Fraunces', serif !important;
+}
+
+[class*="Metrophobic"] {
+  font-family: 'Quicksand', sans-serif !important;
 }
 
 .text-label-caps {
@@ -92,14 +121,64 @@
 /* Custom Scroll reveal and ambient animations */
 .reveal-up {
   opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(32px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, opacity;
 }
 
-.reveal-up.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-up.is-visible,
+.reveal-scale.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+/* Stagger delays for grid children and interactive cards */
+.stagger-children > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { transition-delay: 0.12s; }
+.stagger-children > *:nth-child(3) { transition-delay: 0.19s; }
+.stagger-children > *:nth-child(4) { transition-delay: 0.26s; }
+.stagger-children > *:nth-child(5) { transition-delay: 0.33s; }
+.stagger-children > *:nth-child(6) { transition-delay: 0.40s; }
+
+/* Subtle line reveal underline on headings */
+.line-reveal {
+  position: relative;
+}
+.line-reveal::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #dd2d4a;
+  transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+.line-reveal.is-visible::after {
+  width: 100%;
 }
 
 .ambient-float {
@@ -169,4 +248,542 @@ body.cursor-click #cursor-ring {
   width: 20px;
   height: 20px;
   border-color: rgba(243, 233, 220, 0.9);
+}
+
+/* ==========================================================================
+   LIGHT / BRIGHT THEME - ULTRA HIGH CONTRAST (WCAG AAA)
+   Palette:
+   - Linen (#f3e9dc) -> Soft warm creamy linen page backdrop (#fcf9f5)
+   - Crushed Berry (#880d1e) -> Dominant editorial headings & deep accents
+   - Amaranth (#dd2d4a) -> Primary action buttons & active focal points
+   - High-Contrast Text -> #190509 (Deep Espresso / Black-Berry, 16:1 contrast ratio)
+   - Muted Text -> #4a141f (Deep Berry Plum, 9:1 contrast ratio)
+   - Accent Cyan -> #064e5b (Deep Oceanic Cyan, 8:1 contrast ratio)
+   - Accent Pink -> #9e1430 (Deep Crimson Rose, 7:1 contrast ratio)
+   ========================================================================== */
+
+html.light,
+html.light body,
+html.light #root {
+  background-color: #faf6f0 !important;
+  color: #190509 !important;
+}
+
+html.light div.min-h-screen {
+  background-color: #faf6f0 !important;
+  color: #190509 !important;
+}
+
+/* Base surface backgrounds */
+html.light .bg-\[\#0b0e14\],
+html.light [class*="bg-[#0b0e14]"] {
+  background-color: #faf6f0 !important;
+}
+
+/* Custom Text Selection Highlight - Fiery Amaranth Pop */
+::selection,
+*::selection,
+input::selection,
+textarea::selection,
+select::selection {
+  background-color: #dd2d4a !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+::-moz-selection,
+*::-moz-selection,
+input::-moz-selection,
+textarea::-moz-selection,
+select::-moz-selection {
+  background-color: #dd2d4a !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html.light *::selection,
+html.light ::selection,
+html.light input::selection,
+html.light textarea::selection,
+html.light select::selection {
+  background-color: #dd2d4a !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html.light *::-moz-selection,
+html.light ::-moz-selection,
+html.light input::-moz-selection,
+html.light textarea::-moz-selection,
+html.light select::-moz-selection {
+  background-color: #dd2d4a !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Card surfaces */
+/* Card surfaces - Crisp, solid, and high-visibility */
+html.light .bg-\[\#121722\],
+html.light [class*="bg-[#121722]"] {
+  background-color: #ffffff !important;
+  border-color: rgba(136, 13, 30, 0.32) !important;
+  box-shadow: 0 12px 32px -4px rgba(136, 13, 30, 0.14), 0 3px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Elevated secondary containers */
+html.light .bg-\[\#1a2336\],
+html.light .bg-\[\#151c2b\],
+html.light .bg-\[\#0f131c\],
+html.light [class*="bg-[#1a2336]"],
+html.light [class*="bg-[#151c2b]"] {
+  background-color: #f7efe6 !important;
+  border-color: rgba(136, 13, 30, 0.28) !important;
+}
+
+/* Gradients - Restricted strictly to horizontal banner strips */
+html.light .bg-gradient-to-r[class*="from-[#121722]"],
+html.light div.bg-gradient-to-r[class*="from-[#121722]"] {
+  background-image: linear-gradient(90deg, #ffffff, #fff3f6, #ffffff) !important;
+}
+
+/* ELIMINATE all translucent/foggy overlays from card thumbnails */
+html.light [class*="bg-gradient-to-t"][class*="opacity-80"],
+html.light [class*="bg-gradient-to-t"][class*="from-[#121722]"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* All photos and images: 100% crisp, razor-sharp, natural vibrancy */
+html.light img {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Photo containers in cards: solid border and background for sharp definition */
+html.light .relative.overflow-hidden {
+  border-color: rgba(136, 13, 30, 0.25) !important;
+  background-color: #f7efe6 !important;
+}
+
+/* Headings: Deep Crushed Berry #880d1e */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light .font-display,
+html.light .font-heading,
+html.light .font-serif-brand {
+  color: #880d1e !important;
+}
+
+/* All Body Text: Crisp, razor-sharp deep espresso #190509 */
+html.light p,
+html.light span,
+html.light li,
+html.light label,
+html.light div {
+  color: #190509;
+}
+
+/* Specific text color class overrides */
+html.light [class*="text-[#f3e9dc]"] {
+  color: #190509 !important;
+}
+
+html.light [class*="text-[#f3e9dc]/85"],
+html.light [class*="text-[#f3e9dc]/80"],
+html.light [class*="text-[#f3e9dc]/75"],
+html.light [class*="text-[#f3e9dc]/70"],
+html.light [class*="text-[#f3e9dc]/60"] {
+  color: #4a141f !important;
+}
+
+/* Light Cyan Accents: rendered in deep oceanic teal #064e5b for 8:1 contrast */
+html.light [class*="text-[#cbeef3]"] {
+  color: #064e5b !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+/* Pink Accents: rendered in deep crimson rose #9e1430 */
+html.light [class*="text-[#f49cbb]"],
+html.light [class*="text-[#f26a8d]"] {
+  color: #9e1430 !important;
+}
+
+/* Badges & Tags */
+html.light [class*="bg-[#121722]"][class*="text-[#cbeef3]"],
+html.light [class*="bg-[#0b0e14]"][class*="text-[#cbeef3]"],
+html.light span[class*="border-[#cbeef3]"] {
+  background-color: #e3f5f8 !important;
+  border-color: rgba(6, 78, 91, 0.35) !important;
+  color: #064e5b !important;
+}
+
+/* Borders */
+html.light [class*="border-[#880d1e]"],
+html.light [class*="border-[#880d1e]/40"] {
+  border-color: rgba(136, 13, 30, 0.22) !important;
+}
+
+html.light [class*="border-[#cbeef3]"],
+html.light [class*="border-[#cbeef3]/40"],
+html.light [class*="border-[#cbeef3]/30"] {
+  border-color: rgba(6, 78, 91, 0.35) !important;
+}
+
+html.light [class*="border-white"],
+html.light [class*="border-white/10"],
+html.light [class*="border-white/20"] {
+  border-color: rgba(136, 13, 30, 0.35) !important;
+}
+
+/* Secondary outline buttons (e.g. "The Sanctuary Manifesto", "Explore Full Page") */
+html.light a.border:not([class*="bg-[#dd2d4a]"]):not([class*="bg-[#880d1e]"]),
+html.light button.border:not([class*="bg-[#dd2d4a]"]):not([class*="bg-[#880d1e]"]) {
+  border-color: rgba(136, 13, 30, 0.3) !important;
+  color: #880d1e !important;
+  background-color: #ffffff !important;
+}
+
+html.light a.border:not([class*="bg-[#dd2d4a]"]):not([class*="bg-[#880d1e]"]):hover,
+html.light button.border:not([class*="bg-[#dd2d4a]"]):not([class*="bg-[#880d1e]"]):hover {
+  background-color: #880d1e !important;
+  color: #ffffff !important;
+}
+
+/* Primary CTA buttons: Keep bold Amaranth with crisp white text */
+html.light a.bg-\[\#dd2d4a\],
+html.light button.bg-\[\#dd2d4a\],
+html.light .bg-\[\#dd2d4a\],
+html.light .bg-\[\#880d1e\],
+html.light .bg-\[\#128C7E\] {
+  color: #ffffff !important;
+  background-color: #dd2d4a !important;
+}
+
+html.light a.bg-\[\#dd2d4a\] *,
+html.light button.bg-\[\#dd2d4a\] *,
+html.light .bg-\[\#dd2d4a\] *,
+html.light .bg-\[\#880d1e\] *,
+html.light .bg-\[\#128C7E\] * {
+  color: #ffffff !important;
+}
+
+/* Floating WhatsApp Contact Box - Light Mode Text Color */
+html.light #floating-whatsapp-btn span.text-xs,
+html.light #floating-whatsapp-btn .floating-whatsapp-text {
+  color: #075E54 !important;
+}
+
+html.light #floating-whatsapp-btn:hover span.text-xs,
+html.light #floating-whatsapp-btn:hover .floating-whatsapp-text {
+  color: #ffffff !important;
+}
+
+/* Header & Navbar */
+html.light header {
+  background-color: rgba(253, 251, 247, 0.96) !important;
+  border-bottom-color: rgba(136, 13, 30, 0.15) !important;
+  backdrop-filter: blur(14px) !important;
+  box-shadow: 0 4px 20px -2px rgba(136, 13, 30, 0.06) !important;
+}
+
+html.light header a span.font-\[\'Fraunces\'\,serif\] {
+  color: #880d1e !important;
+}
+
+html.light header nav a {
+  color: #2b0b12 !important;
+}
+
+html.light header nav a:hover {
+  color: #dd2d4a !important;
+}
+
+html.light header a[href*="tel:"] {
+  color: #880d1e !important;
+  border-color: rgba(136, 13, 30, 0.25) !important;
+  background-color: #ffffff !important;
+}
+
+html.light header a[href*="tel:"] span {
+  color: #880d1e !important;
+}
+
+html.light header button {
+  color: #880d1e !important;
+}
+
+html.light header button span {
+  color: #880d1e !important;
+}
+
+/* Mobile drawer in light mode */
+html.light header .lg\:hidden[class*="bg-[#121722]"] {
+  background-color: #ffffff !important;
+  border-bottom-color: rgba(136, 13, 30, 0.2) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light header .lg\:hidden[class*="bg-[#121722]"] a {
+  color: #190509 !important;
+}
+
+/* Hero Section Metrics: 24/7, 1:1, 100% */
+html.light section[class*="min-h-"] div.font-\[\'Nunito\'\,sans-serif\] {
+  color: #880d1e !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+/* Form Inputs, Labels, Textareas */
+html.light form label {
+  color: #190509 !important;
+  font-weight: 700 !important;
+}
+
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: #ffffff !important;
+  color: #190509 !important;
+  border-color: rgba(136, 13, 30, 0.28) !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: rgba(136, 13, 30, 0.5) !important;
+}
+
+html.light input:focus,
+html.light textarea:focus,
+html.light select:focus {
+  border-color: #dd2d4a !important;
+  box-shadow: 0 0 0 3px rgba(221, 45, 74, 0.2) !important;
+}
+
+/* Overlay caption cards on images (e.g. Garden Play Suite, Daily Routine, etc.) - Solid and crisp */
+html.light .relative [class*="bg-[#0b0e14]/90"],
+html.light .relative [class*="bg-[#0b0e14]/85"],
+html.light .relative [class*="bg-[#0b0e14]/80"] {
+  background-color: #ffffff !important;
+  border-color: rgba(136, 13, 30, 0.35) !important;
+  box-shadow: 0 8px 24px rgba(136, 13, 30, 0.12), 0 2px 6px rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: none !important;
+}
+
+/* Photo vignette overlays on hero image: keep text light on dark photo overlay */
+html.light .relative [class*="bg-gradient-to-t from-[#0b0e14]"] h1,
+html.light .relative [class*="bg-gradient-to-t from-[#0b0e14]"] h2,
+html.light .relative [class*="bg-gradient-to-t from-[#0b0e14]"] h3,
+html.light .relative [class*="bg-gradient-to-t from-[#0b0e14]"] p,
+html.light .relative [class*="bg-gradient-to-t from-[#0b0e14]"] div,
+html.light .relative [class*="bg-gradient-to-t from-[#0b0e14]"] span,
+html.light .relative .absolute h1.text-white,
+html.light .relative .absolute h2.text-white,
+html.light .relative .absolute h3.text-white,
+html.light .relative .absolute p.text-white,
+html.light .relative .absolute span.text-white {
+  color: #ffffff !important;
+}
+
+html.light .relative [class*="bg-gradient-to-t from-[#0b0e14]"] span[class*="text-[#cbeef3]"] {
+  color: #cbeef3 !important;
+}
+
+html.light .relative [class*="bg-gradient-to-t from-[#0b0e14]"] p[class*="text-[#f49cbb]"] {
+  color: #f49cbb !important;
+}
+
+html.light .relative [class*="bg-[#0b0e14]/90"] span {
+  color: #190509 !important;
+}
+
+/* Active timeline tabs & indicator states pop up effect */
+html.light div[class*="ring-[#dd2d4a]"],
+html.light div[class*="border-[#dd2d4a]"][class*="shadow-lg"],
+html.light div[class*="border-[#dd2d4a]"][class*="shadow-[0_8px_30px"] {
+  background-color: #ffffff !important;
+  border-color: #dd2d4a !important;
+  box-shadow: 0 14px 35px -3px rgba(221, 45, 74, 0.28), 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  transform: translateY(-3px) scale(1.015) !important;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+/* Selected tariff / plan buttons pop up */
+html.light [class*="shadow-[0_0_15px_rgba(221,45,74"] {
+  box-shadow: 0 10px 28px -2px rgba(221, 45, 74, 0.5), 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-3px) scale(1.04) !important;
+  background-color: #dd2d4a !important;
+  color: #ffffff !important;
+}
+
+html.light [class*="shadow-[0_0_15px_rgba(221,45,74"] * {
+  color: #ffffff !important;
+}
+
+/* Featured / selected rate card pop up */
+html.light #rates [class*="scale-105"] {
+  transform: scale(1.05) translateY(-5px) !important;
+  box-shadow: 0 18px 40px -4px rgba(221, 45, 74, 0.3) !important;
+  background-color: #ffffff !important;
+}
+
+/* Universal Card Hover Pop Up Effect across all sections */
+html.light [class*="hover:-translate-y-1"]:hover,
+html.light [class*="hover:border-[#cbeef3]"]:hover,
+html.light #suites .grid > div:hover,
+html.light #philosophy .group:hover,
+html.light #clinical [class*="hover:border-[#cbeef3]"]:hover,
+html.light #rates [class*="hover:border-[#cbeef3]"]:hover,
+html.light #faq > div > div:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 18px 40px -4px rgba(221, 45, 74, 0.22), 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  border-color: #dd2d4a !important;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+/* Rates stay duration buttons unselected hover pop up */
+html.light #rates button[class*="hover:border-[#cbeef3]"]:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  border-color: #dd2d4a !important;
+  color: #dd2d4a !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(221, 45, 74, 0.2) !important;
+}
+
+/* Card hover title protection in Light Mode */
+html.light .group:hover h2,
+html.light .group:hover h3,
+html.light .group:hover h4 {
+  color: #880d1e !important;
+}
+
+/* Icon holders (Philosophy pillars, DayInTheLife phases, etc.) */
+html.light div.rounded-xl[class*="bg-[#0b0e14]"] {
+  background-color: #f3e9dc;
+  border-color: rgba(136, 13, 30, 0.25);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+html.light div.rounded-xl[class*="bg-[#0b0e14]"] span {
+  color: #880d1e;
+  transition: color 0.3s ease;
+}
+
+/* Interactive Pop Up for Icon Holders on Card Hover / Selection */
+html.light .group:hover div.rounded-xl[class*="bg-[#0b0e14]"],
+html.light .group:hover [class*="group-hover:bg-[#dd2d4a]"] {
+  background-color: #dd2d4a !important;
+  border-color: #dd2d4a !important;
+  transform: scale(1.08) translateY(-2px) !important;
+  box-shadow: 0 8px 22px rgba(221, 45, 74, 0.4) !important;
+}
+
+html.light .group:hover div.rounded-xl[class*="bg-[#0b0e14]"] span,
+html.light .group:hover [class*="group-hover:bg-[#dd2d4a]"] span {
+  color: #ffffff !important;
+}
+
+/* Service icon hover pop up color */
+html.light .group:hover [class*="group-hover:text-[#dd2d4a]"],
+html.light [class*="hover:text-[#dd2d4a]"]:hover {
+  color: #dd2d4a !important;
+  transform: scale(1.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Navbar active & hover animated underline pop up */
+html.light header nav a::after {
+  background-color: #dd2d4a !important;
+  height: 2px !important;
+}
+
+html.light header nav a:hover {
+  color: #dd2d4a !important;
+}
+
+/* Date picker popup and form control pop up effects */
+html.light input[type="date"] {
+  color-scheme: light !important;
+}
+
+html.light select option {
+  background-color: #ffffff !important;
+  color: #190509 !important;
+}
+
+/* Outline and Primary Button Hover Pop Up Elevation */
+html.light a.border,
+html.light button.border {
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+html.light a.border:hover,
+html.light button.border:hover {
+  background-color: #dd2d4a !important;
+  border-color: #dd2d4a !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 22px rgba(221, 45, 74, 0.35) !important;
+}
+
+html.light a.border:hover *,
+html.light button.border:hover * {
+  color: #ffffff !important;
+}
+
+html.light a.bg-\[\#dd2d4a\],
+html.light button.bg-\[\#dd2d4a\],
+html.light .bg-\[\#dd2d4a\] {
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+html.light a.bg-\[\#dd2d4a\]:hover,
+html.light button.bg-\[\#dd2d4a\]:hover,
+html.light .bg-\[\#dd2d4a\]:hover {
+  background-color: #b81d36 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 28px rgba(221, 45, 74, 0.5) !important;
+}
+
+/* Footer in Light Mode */
+html.light footer {
+  background-color: #f2e9dc !important;
+  border-top-color: rgba(136, 13, 30, 0.18) !important;
+}
+
+html.light footer a {
+  color: #2b0b12 !important;
+}
+
+html.light footer a:hover {
+  color: #dd2d4a !important;
+}
+
+html.light footer p,
+html.light footer span,
+html.light footer div {
+  color: #3b141d !important;
+}
+
+/* Ambient glow softeners in Light Mode */
+html.light [class*="bg-[#880d1e]/30"] {
+  background-color: rgba(221, 45, 74, 0.07) !important;
+}
+
+html.light [class*="bg-[#cbeef3]/15"],
+html.light [class*="bg-[#cbeef3]/5"] {
+  background-color: rgba(203, 238, 243, 0.35) !important;
+}
+
+/* Custom cursor in Light Mode */
+html.light #cursor-dot {
+  background-color: #dd2d4a;
+}
+
+html.light #cursor-ring {
+  border-color: rgba(221, 45, 74, 0.5);
 }
