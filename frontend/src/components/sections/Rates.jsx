@@ -1,5 +1,6 @@
 import React from 'react';
 import { HOURLY_PACKAGES } from '../../constants/pricing';
+import { navigate } from '../../constants/navigation';
 
 export default function Rates() {
   return (
@@ -17,7 +18,11 @@ export default function Rates() {
         </p>
         <div className="pt-2">
           <a
-            href="#/rates"
+            href="/rates"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/rates');
+            }}
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#cbeef3] hover:text-white px-5 py-2.5 border border-[#cbeef3]/40 hover:border-[#cbeef3] bg-[#121722] transition-colors rounded shadow-sm hover:shadow-md"
           >
             <span>Explore Full Page: Detailed Packages &amp; Inclusions Breakdown</span>

@@ -16,13 +16,21 @@ import FaqPage from './pages/FaqPage';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import ThemeToggle from './components/common/ThemeToggle';
 import { useTheme } from './context/ThemeContext';
+import { navigate } from './constants/navigation';
 
 export default function App() {
   const { theme } = useTheme();
 
   const parseRoute = () => {
-    const hash = window.location.hash || '';
-    const clean = hash.replace(/^#\/?/, '').split('?')[0].trim();
+    // If an old hash URL is accessed (e.g. #/rates), seamlessly redirect to /rates
+    if (typeof window !== 'undefined' && window.location.hash && window.location.hash.startsWith('#/')) {
+      const cleanHash = window.location.hash.replace(/^#\/?/, '').split('?')[0];
+      const search = window.location.hash.includes('?') ? '?' + window.location.hash.split('?')[1] : '';
+      window.history.replaceState({}, '', '/' + cleanHash + search);
+    }
+
+    const pathname = typeof window !== 'undefined' ? window.location.pathname || '/' : '/';
+    const clean = pathname.replace(/^\/+/, '').split('?')[0].split('#')[0].trim();
     if (!clean) return 'home';
     return clean;
   };
@@ -39,22 +47,18 @@ export default function App() {
       window.scrollTo({ top: 0, behavior: 'instant' });
     };
 
-    window.addEventListener('hashchange', handleRouteChange);
     window.addEventListener('popstate', handleRouteChange);
     return () => {
-      window.removeEventListener('hashchange', handleRouteChange);
       window.removeEventListener('popstate', handleRouteChange);
     };
   }, []);
 
   const navigateHome = () => {
-    window.location.hash = '';
-    setCurrentRoute('home');
+    navigate('/');
   };
 
   const navigateToDayInTheLife = () => {
-    window.location.hash = '#/day-in-the-life';
-    setCurrentRoute('day-in-the-life');
+    navigate('/day-in-the-life');
   };
 
   const renderCurrentPage = () => {
@@ -83,9 +87,8 @@ export default function App() {
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-300 ${
-        theme === 'light' ? 'bg-[#faf6f0] text-[#190509]' : 'bg-[#0b0e14] text-[#f3e9dc]'
-      } selection:bg-[#dd2d4a] selection:text-white font-['Plus_Jakarta_Sans',sans-serif]`}
+      className={`min-h-screen transition-colors duration-300 ${theme === 'light' ? 'bg-[#faf6f0] text-[#190509]' : 'bg-[#0b0e14] text-[#f3e9dc]'
+        } selection:bg-[#dd2d4a] selection:text-white font-['Plus_Jakarta_Sans',sans-serif]`}
     >
       {/* Animated Luxury Gold Crest Preloader */}
       <Preloader />

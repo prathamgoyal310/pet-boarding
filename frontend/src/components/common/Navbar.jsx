@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BRAND } from '../../constants/brand';
-import { NAV_LINKS } from '../../constants/navigation';
+import { NAV_LINKS, navigate } from '../../constants/navigation';
 import ThemeToggle from './ThemeToggle';
 
 export default function Navbar({ currentRoute, onNavigateHome, onNavigateDayInTheLife }) {
@@ -9,13 +9,13 @@ export default function Navbar({ currentRoute, onNavigateHome, onNavigateDayInTh
   const handleLinkClick = (e, link) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    window.location.hash = link.href;
+    navigate(link.href);
   };
 
   const handleReserveClick = (e) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    window.location.hash = '#/admissions';
+    navigate('/admissions');
   };
 
   return (
@@ -23,11 +23,11 @@ export default function Navbar({ currentRoute, onNavigateHome, onNavigateDayInTh
       <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 h-18 lg:h-20 flex items-center justify-between gap-4 lg:gap-6">
         {/* Brand Logo & Name */}
         <a
-          href="#"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
             if (onNavigateHome) onNavigateHome();
-            else window.location.hash = '';
+            else navigate('/');
           }}
           className="flex items-center gap-2.5 sm:gap-3 group shrink-0 py-1"
         >
@@ -81,10 +81,10 @@ export default function Navbar({ currentRoute, onNavigateHome, onNavigateDayInTh
         <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
           <ThemeToggle showLabel={false} />
           <a
-            href="#/enrollment"
+            href="/enrollment"
             onClick={(e) => {
               e.preventDefault();
-              window.location.hash = '#/enrollment';
+              navigate('/enrollment');
             }}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#cbeef3] hover:text-white border border-[#cbeef3]/40 hover:border-[#cbeef3] hover:bg-[#cbeef3]/10 transition-colors whitespace-nowrap rounded"
             title="First-Time Enrolment Form & Dog Database"
@@ -137,11 +137,11 @@ export default function Navbar({ currentRoute, onNavigateHome, onNavigateDayInTh
               <ThemeToggle showLabel={true} />
             </div>
             <a
-              href="#/enrollment"
+              href="/enrollment"
               onClick={(e) => {
                 e.preventDefault();
                 setMobileMenuOpen(false);
-                window.location.hash = '#/enrollment';
+                navigate('/enrollment');
               }}
               className="w-full py-2.5 text-center text-xs font-bold uppercase tracking-wider border border-[#cbeef3]/50 text-[#cbeef3] hover:bg-[#cbeef3]/10 rounded flex items-center justify-center gap-1.5"
             >
@@ -156,7 +156,7 @@ export default function Navbar({ currentRoute, onNavigateHome, onNavigateDayInTh
               {BRAND.phone}
             </a>
             <a
-              href="#/admissions"
+              href="/admissions"
               onClick={handleReserveClick}
               className="w-full py-3 text-center text-xs font-bold uppercase tracking-widest bg-[#dd2d4a] text-white"
             >

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BRAND } from '../../constants/brand';
 import { apiService } from '../../services/api';
+import { navigate } from '../../constants/navigation';
 
 export default function EnquiryForm() {
   const [customerType, setCustomerType] = useState('returning'); // 'returning' | 'new'
@@ -181,7 +182,11 @@ export default function EnquiryForm() {
             </p>
             <div className="pt-1">
               <a
-                href="#/enrollment"
+                href="/enrollment"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/enrollment');
+                }}
                 className="inline-flex items-center gap-1.5 text-xs text-[#cbeef3] hover:text-white font-bold uppercase tracking-wider underline decoration-[#dd2d4a] decoration-2 underline-offset-4 transition-colors"
               >
                 <span>New guest? First-time Dog Enrolment Form</span>
@@ -431,7 +436,11 @@ export default function EnquiryForm() {
                         </p>
                         <div className="pt-1 flex items-center gap-3">
                           <a
-                            href="#/enrollment"
+                            href="/enrollment"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              navigate('/enrollment');
+                            }}
                             className="px-3.5 py-1.5 bg-[#dd2d4a] hover:bg-[#b81d36] text-white text-[11px] font-bold uppercase tracking-wider rounded inline-flex items-center gap-1 transition-colors"
                           >
                             <span>Fill First-Time Enrolment Form</span>

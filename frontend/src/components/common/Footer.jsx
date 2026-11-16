@@ -1,6 +1,6 @@
 import React from 'react';
 import { BRAND } from '../../constants/brand';
-import { FOOTER_LINKS } from '../../constants/navigation';
+import { FOOTER_LINKS, navigate } from '../../constants/navigation';
 
 export default function Footer() {
   return (
@@ -48,6 +48,10 @@ export default function Footer() {
             <a
               key={link.label}
               href={link.href}
+              onClick={(e) => {
+                e.preventDefault();
+                navigate(link.href);
+              }}
               className={`transition-colors duration-300 ${
                 link.highlight ? 'text-[#cbeef3] underline underline-offset-4 hover:text-white' : 'hover:text-[#cbeef3]'
               }`}

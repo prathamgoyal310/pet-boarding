@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ROUTINE_STAGES } from '../../constants/routine';
+import { navigate } from '../../constants/navigation';
 
 export default function DailyRoutine() {
   const [activeStage, setActiveStage] = useState(0);
@@ -21,7 +22,11 @@ export default function DailyRoutine() {
         </p>
         <div className="pt-3">
           <a
-            href="#/day-in-the-life"
+            href="/day-in-the-life"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/day-in-the-life');
+            }}
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#cbeef3] hover:text-white px-5 py-2.5 border border-[#cbeef3]/40 hover:border-[#cbeef3] bg-[#121722] transition-colors rounded shadow-sm hover:shadow-md"
           >
             <span>Explore Full Page: A day in the life of a happy Furrever Inn guest</span>

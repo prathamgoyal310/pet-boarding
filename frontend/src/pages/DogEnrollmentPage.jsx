@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BRAND } from '../constants/brand';
 import { apiService } from '../services/api';
+import { navigate } from '../constants/navigation';
 
 export default function DogEnrollmentPage({ onNavigateHome }) {
   useEffect(() => {
@@ -263,11 +264,11 @@ Kennel / Room Assigned: ${record.kennelRoomNo || 'Assigned on arrival'}`;
       {/* Top Header Navigation & View Toggle */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6 print:hidden">
         <a
-          href="#"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
             if (onNavigateHome) onNavigateHome();
-            else window.location.hash = '';
+            else navigate('/');
           }}
           className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#cbeef3] hover:text-white px-4 py-2 border border-[#cbeef3]/30 hover:border-[#cbeef3] bg-[#121722] transition-colors rounded shadow-sm"
         >
@@ -734,7 +735,11 @@ Kennel / Room Assigned: ${record.kennelRoomNo || 'Assigned on arrival'}`;
                 </button>
 
                 <a
-                  href={`#/admissions?reg=${encodeURIComponent(registeredNumber || formData.enrollmentNo)}`}
+                  href={`/admissions?reg=${encodeURIComponent(registeredNumber || formData.enrollmentNo)}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(`/admissions?reg=${encodeURIComponent(registeredNumber || formData.enrollmentNo)}`);
+                  }}
                   className="px-5 py-2.5 bg-[#dd2d4a] hover:bg-[#b81d36] text-white rounded text-xs font-bold uppercase tracking-widest inline-flex items-center gap-1.5 shadow-lg transition-all"
                 >
                   <span className="material-symbols-outlined text-sm">calendar_month</span>

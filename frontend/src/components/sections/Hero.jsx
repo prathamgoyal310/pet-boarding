@@ -1,5 +1,6 @@
 import React from 'react';
 import stitchHero from '../../assets/images/stitch_hero.jpg';
+import { navigate } from '../../constants/navigation';
 
 export default function Hero() {
   return (
@@ -64,13 +65,21 @@ export default function Hero() {
           <div className="flex flex-wrap items-center gap-4 sm:gap-5 pt-3 sm:pt-5">
             <a
               className="bg-[#dd2d4a] text-white px-7 sm:px-9 py-4 border border-[#f26a8d]/40 hover:bg-[#b81d36] transition-all duration-300 font-['Metrophobic',sans-serif] text-xs uppercase tracking-widest font-semibold shadow-[0_0_15px_rgba(221,45,74,0.4)]"
-              href="#/rates"
+              href="/rates"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/rates');
+              }}
             >
               Explore Suites &amp; Rates
             </a>
             <a
               className="bg-transparent text-[#cbeef3] px-7 sm:px-9 py-4 border border-[#cbeef3]/40 hover:border-[#cbeef3] hover:bg-[#cbeef3]/10 transition-all duration-300 font-['Metrophobic',sans-serif] text-xs uppercase tracking-widest font-semibold"
-              href="#/philosophy"
+              href="/philosophy"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/philosophy');
+              }}
             >
               The Sanctuary Manifesto
             </a>

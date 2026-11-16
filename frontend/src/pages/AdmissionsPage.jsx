@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BRAND } from '../constants/brand';
 import EnquiryForm from '../components/sections/EnquiryForm';
+import { navigate } from '../constants/navigation';
 
 export default function AdmissionsPage({ onNavigateHome }) {
   useEffect(() => {
@@ -98,11 +99,11 @@ export default function AdmissionsPage({ onNavigateHome }) {
       {/* Return Breadcrumb */}
       <div className="mb-10 sm:mb-12">
         <a
-          href="#"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
             if (onNavigateHome) onNavigateHome();
-            else window.location.hash = '';
+            else navigate('/');
           }}
           className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#cbeef3] hover:text-white px-5 py-2.5 border border-[#cbeef3]/30 hover:border-[#cbeef3] bg-[#121722] transition-colors rounded-lg shadow-sm"
         >
@@ -249,7 +250,11 @@ export default function AdmissionsPage({ onNavigateHome }) {
 
         <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
           <a
-            href="#/enrollment"
+            href="/enrollment"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/enrollment');
+            }}
             className="px-6 py-3.5 bg-[#dd2d4a] hover:bg-[#b81d36] text-white text-xs font-bold uppercase tracking-widest rounded shadow-xl hover:shadow-[0_0_20px_rgba(221,45,74,0.6)] transition-all text-center flex items-center justify-center gap-2"
           >
             <span className="material-symbols-outlined text-sm">assignment</span>

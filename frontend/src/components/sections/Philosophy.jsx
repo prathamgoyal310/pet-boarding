@@ -1,5 +1,6 @@
 import React from 'react';
 import { PHILOSOPHY_PILLARS } from '../../constants/services';
+import { navigate } from '../../constants/navigation';
 
 export default function Philosophy() {
   return (
@@ -18,7 +19,11 @@ export default function Philosophy() {
           </p>
           <div className="pt-1">
             <a
-              href="#/philosophy"
+              href="/philosophy"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate('/philosophy');
+              }}
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#cbeef3] hover:text-white px-5 py-2.5 border border-[#cbeef3]/40 hover:border-[#cbeef3] bg-[#121722] transition-colors rounded shadow-sm hover:shadow-md"
             >
               <span>Explore Full Page: The Complete Sanctuary Manifesto</span>

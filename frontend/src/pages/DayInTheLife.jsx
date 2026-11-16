@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { GUEST_DAY_ROUTINE } from '../constants/guestDiary';
 import { BRAND } from '../constants/brand';
+import { navigate } from '../constants/navigation';
 
 export default function DayInTheLife({ onNavigateHome }) {
   useEffect(() => {
@@ -12,11 +13,11 @@ export default function DayInTheLife({ onNavigateHome }) {
       {/* Navigation Breadcrumb / Return */}
       <div className="mb-10 sm:mb-12">
         <a
-          href="#"
+          href="/"
           onClick={(e) => {
             e.preventDefault();
             if (onNavigateHome) onNavigateHome();
-            else window.location.hash = '';
+            else navigate('/');
           }}
           className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#cbeef3] hover:text-white px-5 py-2.5 border border-[#cbeef3]/30 hover:border-[#cbeef3] bg-[#121722] transition-colors rounded-lg shadow-sm"
         >
